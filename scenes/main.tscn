@@ -51,4 +51,12 @@ shape = SubResource("RectangleShape2D_5q5nl")
 wait_time = 0.5
 autostart = true
 
+[node name="spawn_enemy_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="enemy_container" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
+[connection signal="body_entered" from="ground" to="ground" method="_on_body_entered"]
 [connection signal="timeout" from="score_timer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="spawn_enemy_timer" to="." method="_on_spawn_enemy_timer_timeout"]
