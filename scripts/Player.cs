@@ -26,7 +26,7 @@ public partial class Player : Area2D
 
 	private void player_movement(double delta_time)
 	{
-		float player_speed = 700.0f;
+		float player_speed = 750.0f;
 		float player_movement = player_speed * (float)delta_time;
 		if(Input.IsActionPressed("left"))
 		{
