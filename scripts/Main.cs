@@ -9,6 +9,7 @@ public partial class Main : Node2D
 	private Timer spawn_enemy_timer;
 	private PackedScene enemy_scene;
 	private RigidBody2D enemy_instance;
+	private Control restart_ui_container;
 
 	public override void _Ready()
 	{
@@ -17,6 +18,7 @@ public partial class Main : Node2D
 		score_timer = GetNode<Timer>("score_timer");
 		enemy_container = GetNode<Node2D>("enemy_container");
 		spawn_enemy_timer = GetNode<Timer>("spawn_enemy_timer");
+		restart_ui_container = GetNode<Control>("GUI/gui_container/restart_ui_container");
 	}
 
 	private int score_current = 0;
@@ -28,6 +30,11 @@ public partial class Main : Node2D
 		if(is_player_dead == false)
 		{
 			score_label.Text = score_text + score_current;
+		}
+		else if(is_player_dead)
+		{
+			spawn_enemy_timer.Stop();
+			restart_ui_container.Visible = true;
 		}
 
 	}
@@ -43,13 +50,18 @@ public partial class Main : Node2D
 	private void _on_spawn_enemy_timer_timeout()
 	{
 		spawn_enemy();
-		float random_timer_time = rng.RandfRange(0.1f, 1.2f);
+		float random_timer_time = rng.RandfRange(0.08f, 0.3f);
 		spawn_enemy_timer.WaitTime = random_timer_time;
 	}
 
 	private void _on_score_timer_timeout()
 	{
 		score_current++;
+	}
+
+	private void _on_restart_button_pressed()
+	{
+		GetTree().ReloadCurrentScene();
 	}
 
 }

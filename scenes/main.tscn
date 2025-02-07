@@ -30,6 +30,29 @@ offset_bottom = 100.0
 theme_override_font_sizes/font_size = 52
 text = "Score: 9999"
 
+[node name="restart_ui_container" type="Control" parent="GUI/gui_container"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="game_over_label" type="Label" parent="GUI/gui_container/restart_ui_container"]
+offset_left = 583.0
+offset_top = 379.0
+offset_right = 1346.0
+offset_bottom = 554.0
+theme_override_font_sizes/font_size = 128
+text = "Game Over!"
+
+[node name="restart_button" type="Button" parent="GUI/gui_container/restart_ui_container"]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 618.0
+offset_right = 1069.0
+offset_bottom = 709.0
+theme_override_font_sizes/font_size = 60
+text = "Restart"
+
 [node name="player" type="Area2D" parent="."]
 position = Vector2(960, 834)
 collision_mask = 6
@@ -56,6 +79,7 @@ autostart = true
 
 [node name="enemy_container" type="Node2D" parent="."]
 
+[connection signal="pressed" from="GUI/gui_container/restart_ui_container/restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="body_entered" from="player" to="player" method="_on_body_entered"]
 [connection signal="body_entered" from="ground" to="ground" method="_on_body_entered"]
 [connection signal="timeout" from="score_timer" to="." method="_on_score_timer_timeout"]
