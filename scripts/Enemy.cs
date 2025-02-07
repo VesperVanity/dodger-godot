@@ -6,7 +6,6 @@ public partial class Enemy : RigidBody2D
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
 	private CollisionShape2D collision;
 	private RectangleShape2D rect = new RectangleShape2D();
-
 	float random_gravity = 0;
 	float random_size = 0;
 	public override void _Ready()
@@ -18,11 +17,4 @@ public partial class Enemy : RigidBody2D
 		collision.Shape = rect;
 		rect.Size = new Vector2(random_size, random_size);
 	}
-
-	
-	public override void _Process(double delta)
-	{
-
-	}
-
 }

@@ -63,5 +63,4 @@ public partial class Main : Node2D
 	{
 		GetTree().ReloadCurrentScene();
 	}
-
 }

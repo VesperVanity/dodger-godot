@@ -37,5 +37,4 @@ public partial class Player : Area2D
 			Position += new Vector2(player_movement, 0.0f);
 		}
 	}
-
 }
